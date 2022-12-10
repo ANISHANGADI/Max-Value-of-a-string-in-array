@@ -1,0 +1,32 @@
+class Solution {
+public:
+    int maximumValue(vector<string>& strs) {
+    vector<int>v;
+    for(int i=0;i<strs.size();i++)
+    {
+        string k = strs[i];
+        bool num = false;
+        bool c = false;
+        for(int j=0;j<k.length();j++)
+        {   
+            if(isdigit(k.at(j)))
+            {
+                num = true;
+            }
+            if(isalpha(k.at(j)))
+            {
+                c= true;
+            }
+
+        }
+        if(num && !c)
+        {
+            v.push_back(stoi(strs[i]));
+        }
+        else
+            v.push_back(strs[i].length());
+    }
+    return *max_element(v.begin(),v.end());
+        
+    }
+};
